@@ -1,0 +1,13 @@
+<script>
+var url='variable';
+$(document).ajaxComplete(function(event, xhr, settings) {
+    $('a.btn.btn-block').each(function () {
+        if($(this).text()=='创建签单'){
+            $(this).parent('td').unbind('click');
+            $(this).unbind('click').bind('click',function () {
+                ajaxPage.loadPage(url,false);
+            });
+        }
+    })
+})
+</script>
