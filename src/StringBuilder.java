@@ -21,18 +21,24 @@ public class StringBuilder {
             InputStreamReader reader = new InputStreamReader(
                     new FileInputStream(filename)); // 建立一个输入流对象reader
             BufferedReader br = new BufferedReader(reader); // 建立一个对象，它把文件内容转成计算机能读懂的语言
-            String line = "";
-            line = br.readLine();
             Set set = map.entrySet();
             for(Iterator iter = set.iterator(); iter.hasNext();) {
                 Map.Entry entry = (Map.Entry) iter.next();
-                out.write("var " + entry.getKey() + "=''\r");
+                out.write("var rtn =''\r");
+            }
+            String line = "";
+            line = br.readLine();
+            if (line!=null){
+                out.write("rtn+=\""+line+"\"\r");
+            }
+            for(Iterator iter = set.iterator(); iter.hasNext();) {
+                Map.Entry entry = (Map.Entry) iter.next();
                 while (line != null) {
                     line = br.readLine(); // 一次读入一行数据
                     if (line != null) {
                         line = line.replaceAll("\"", "\\\\" + "\"");
-                        line = line.replaceAll("variable", "\"+" + entry.getValue() + "+\"");
-                        out.write(entry.getKey() + "+=\"" + line + "\"\r"); // \r\n即为换行
+                        line = line.replaceAll((String) entry.getKey(), "\"+" + entry.getValue() + "+\"");
+                        out.write("rtn+=\"" + line + "\"\r"); // \r\n即为换行
                     }
                 }
             }
