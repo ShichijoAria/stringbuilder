@@ -1,3 +1,5 @@
+package stringbuilder;
+
 import java.io.*;
 import java.util.Iterator;
 import java.util.Map;

@@ -4,10 +4,11 @@ $(document).ajaxComplete(function(event, xhr, settings) {
         if($(this).text()=='创建签单'){
             $(this).parent('td').unbind('click');
             $(this).unbind('click').bind('click',function () {
-                ajaxPage.loadPage(url,false);
-                console.log(url)
+                ajaxPage.loadPage('url',false);
+                console.log('url');
             });
         }
     })
 })
+
 </script>
