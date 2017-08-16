@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
         Map map=new HashMap<String,String>();
-        map.put("url","http://baidu.com");
-        map.put("btn","url");
+        map.put("startTime","startTime");
+        map.put("endTime","endTime");
         new StringBuilder().OA365(map,"rtn");
     }
 }

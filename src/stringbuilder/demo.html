@@ -1,14 +1,2 @@
-<script>
-$(document).ajaxComplete(function(event, xhr, settings) {
-    $('a.btn.btn-block').each(function () {
-        if($(this).text()=='创建签单'){
-            $(this).parent('td').unbind('click');
-            $(this).unbind('click').bind('click',function () {
-                ajaxPage.loadPage('url',false);
-                console.log('url');
-            });
-        }
-    })
-})
-
-</script>
+SELECT p.ID,p.FORMID,p.DOMAINID,x.ITEM_KHXM,x.ITEM_QDH, p.ITEM_QDID, ITEM_CPMC AS ITEM_QDCP, ITEM_FKED, ITEM_FKRQ, ITEM_HKRQ FROM tlk_qdcp p INNER JOIN tlk_qdxx x on x.ID=p.ITEM_QDID
+where unix_timestamp(p.ITEM_FKRQ)>unix_timestamp('startTime') and unix_timestamp(p.ITEM_FKRQ) < unix_timestamp('endTime')
